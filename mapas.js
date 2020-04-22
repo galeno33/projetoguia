@@ -13,6 +13,7 @@ function initMap() {
         zoom: 13
             //-2.488291, -44.292780 --> lat e lng da praça do pescador
     });
+
     var infoWindow = new google.maps.InfoWindow;
 
     // Change this depending on the name of your PHP or XML file
@@ -20,21 +21,21 @@ function initMap() {
         var xml = data.responseXML;
 
         //
-        var guia = xml.documentElement.getElementsByTagName('marker');
-        Array.prototype.forEach.call(guia, function(markerElem) {
+        var markers = xml.documentElement.getElementsByTagName('marker');
+        Array.prototype.forEach.call(markers, function(markerElem) {
             //var codigo = markerElem.getAttribute('codigo');
             var localizacao = markerElem.getAttribute('localizacao'); //local
             var acessibilidade = markerElem.getAttribute('acessibilidade'); //tipo de acessibilidade
 
             var point = new google.maps.LatLng(
-                parseFloat(markerElem.getAttribute('latitude')),
-                parseFloat(markerElem.getAttribute('longitude')));
+                parseFloat(markerElem.getAttribute('latitude')), //buscar a latitude do banco.php
+                parseFloat(markerElem.getAttribute('longitude'))); //buscar a longitude do banco.php
 
-            var infowincontent = document.createElement('div');
+            //var infowincontent = document.createElement('div');
             var strong = document.createElement('strong');
             strong.textContent = localizacao
             infowincontent.appendChild(strong);
-            infowincontent.appendChild(document.createElement('br'));
+            //infowincontent.appendChild(document.createElement('br'));
 
             var text = document.createElement('text');
             text.textContent = acessibilidade

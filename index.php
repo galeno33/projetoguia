@@ -34,7 +34,7 @@
         <h2>butao</h2>
     </header>
 
-    <div class="col-md" id="map"></div>
+    <div  id="map"></div>
 
 
 
