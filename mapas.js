@@ -22,9 +22,9 @@ function initMap() {
         //
         var guia = xml.documentElement.getElementsByTagName('marker');
         Array.prototype.forEach.call(guia, function(markerElem) {
-            var codigo = markerElem.getAttribute('codigo');
+            //var codigo = markerElem.getAttribute('codigo');
             var localizacao = markerElem.getAttribute('localizacao'); //local
-            var acessibilidade = markerElem.getAttribute('acessibilidade'); //endereço
+            var acessibilidade = markerElem.getAttribute('acessibilidade'); //tipo de acessibilidade
 
             var point = new google.maps.LatLng(
                 parseFloat(markerElem.getAttribute('latitude')),
@@ -40,10 +40,14 @@ function initMap() {
             text.textContent = acessibilidade
             infowincontent.appendChild(text);
             var icon = customLabel[type] || {};
+
+            //adicionar marcador
             var marker = new google.maps.Marker({
                 map: map,
                 position: point,
-                label: icon.label
+                label: icon.label,
+                icon: '<img src="../img/marcador.png"/>'
+
             });
             marker.addListener('click', function() {
                 infoWindow.setContent(infowincontent);
