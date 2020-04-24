@@ -9,12 +9,10 @@ $xmlStr=str_replace("'",'&#39;',$xmlStr);
 $xmlStr=str_replace("&",'&amp;',$xmlStr);
 return $xmlStr;
 }
-//selecionar o banco de dados 
-$db_selected = mysqli_select_db($dbnome, $conn);
 
 // Selecionar o banco de dados GUIA DA ILHA
 $result = "SELECT * FROM guia;";
-$resultado = mysqli_query($db_selected, $result);
+$resultado = mysqli_query($dbnome, $result);
 
 
 header("Content-type: text/xml");

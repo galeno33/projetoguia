@@ -7,6 +7,6 @@ $password="uYT@uDiyYBE6zh8";
 //
 //criar conexao
 $conn = mysqli_connect($servidor, $username,$password);
-$dbnome = "id13340806_guiailha";
+$dbnome = mysqli_query('id13340806_guiailha', $conn);
 ?>
 
