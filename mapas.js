@@ -10,7 +10,7 @@ var customLabel = {
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng('-2.488291', '-44.292780'),
-        zoom: 13,
+        zoom: 13
 
         //-2.488291, -44.292780 --> lat e lng da praça do pescador
     });
@@ -22,8 +22,8 @@ function initMap() {
         var xml = data.responseXML;
 
         //
-        var markes = xml.documentElement.getElementsByTagName('marker');
-        Array.prototype.forEach.call(markes, function(markerElem) {
+        var markers = xml.documentElement.getElementsByTagName('marker');
+        Array.prototype.forEach.call(markers, function(markerElem) {
             // var codigo = markerElem.getAttribute('codigo');
             var localizacao = markerElem.getAttribute('localizacao'); //local
             var acessibilidade = markerElem.getAttribute('acessibilidade'); //tipo de acessibilidade

@@ -19,9 +19,9 @@ $resultado = mysqli_query($db_selected, $result);
 
 header("Content-type: text/xml");
 
-
+echo "<? xml version='1.0 ?>";
 //abrindo o arquivo de conexo
-echo '<guia>';
+echo '<markers>';
 //gerando uma conexao com o banco de dados
 while ($row = mysqli_fetch_assoc($resultado)){
 
@@ -34,7 +34,7 @@ while ($row = mysqli_fetch_assoc($resultado)){
     echo '/>';
 
 }
-  //fechando o arquivo de conexao
-  echo '</guia>';
+  //fechando o arquivo de XML
+  echo '</markers>';
 
 ?> 
