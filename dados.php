@@ -20,7 +20,7 @@ if (! $ conex ã o ) {
 
 // Selecione todas as linhas na tabela de marcadores
 $query = "SELECT * FROM `guia`;"; 
-$result = mysqli_query ($query, $dbnome, $conn);
+$result = mysql_query ($query, $dbnome, $conn);
 
 
 header ("Tipo de conteúdo: texto / xml");

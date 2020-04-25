@@ -16,13 +16,13 @@ function initMap() {
 
     var infoWindow = new google.maps.InfoWindow;
 
-    // Change this depending on the name of your PHP or XML file
-    downloadUrl('/dados.php', function(data) {
+
+    downloadUrl('/banco.php', function(data) {
         var xml = data.responseXML;
 
         //
-        var guia = xml.documentElement.getElementsByTagName('marker');
-        Array.prototype.forEach.call(guia, function(markerElem) {
+        var markes = xml.documentElement.getElementsByTagName('marker');
+        Array.prototype.forEach.call(markes, function(markerElem) {
             // var codigo = markerElem.getAttribute('codigo');
             var localizacao = markerElem.getAttribute('localizacao'); //local
             var acessibilidade = markerElem.getAttribute('acessibilidade'); //tipo de acessibilidade
@@ -47,12 +47,12 @@ function initMap() {
                 map: map,
                 position: point,
                 label: icon.label,
-                icon: '<img src="../img/marcador.png"/>'
+                icon: '<img src="../// Change this depending on the name of your PHP or XML fileimg/marcador.png"/>'
 
             });
             marker.addListener('click', function() {
                 infoWindow.setContent(infowincontent);
-                infoWindow.open(map, marker);
+                infoWindow.open(map, marker); //marker
             });
         });
     });
