@@ -10,14 +10,15 @@ var customLabel = {
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng('-2.488291', '-44.292780'),
-        zoom: 13
-            //-2.488291, -44.292780 --> lat e lng da praça do pescador
+        zoom: 13,
+
+        //-2.488291, -44.292780 --> lat e lng da praça do pescador
     });
 
     var infoWindow = new google.maps.InfoWindow;
 
 
-    downloadUrl('/banco.php', function(data) {
+    downloadUrl('../proj22-04-2020/banco.php', function(data) {
         var xml = data.responseXML;
 
         //
