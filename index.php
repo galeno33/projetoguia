@@ -27,7 +27,8 @@
 
 </head>
 <!--script para exportar os scripts do mapa.js-->
-<script src="mapas.js"></script>
+-<script src="mapas.js"></script>
+
 
 <body>
     <header>

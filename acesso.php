@@ -4,9 +4,13 @@ $username="id13340806_ilhaguia";
 $password="uYT@uDiyYBE6zh8";
 //$database="id13340806_guiailha";
 
+$latitude[] = array();
+$longitude[] = array();
+$coordenadas[] = array();
+
 //
 //criar conexao
 $conn = mysqli_connect($servidor, $username,$password);
-$dbnome = mysqli_query('id13340806_guiailha', $conn);
+$dbnome = mysql_select_db('id13340806_guiailha');
 ?>
 

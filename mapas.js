@@ -17,13 +17,13 @@ function initMap() {
     var infoWindow = new google.maps.InfoWindow;
 
     // Change this depending on the name of your PHP or XML file
-    downloadUrl('banco.php', function(data) {
+    downloadUrl('/dados.php', function(data) {
         var xml = data.responseXML;
 
         //
-        var markers = xml.documentElement.getElementsByTagName('marker');
-        Array.prototype.forEach.call(markers, function(markerElem) {
-            //var codigo = markerElem.getAttribute('codigo');
+        var guia = xml.documentElement.getElementsByTagName('marker');
+        Array.prototype.forEach.call(guia, function(markerElem) {
+            // var codigo = markerElem.getAttribute('codigo');
             var localizacao = markerElem.getAttribute('localizacao'); //local
             var acessibilidade = markerElem.getAttribute('acessibilidade'); //tipo de acessibilidade
 
@@ -31,14 +31,14 @@ function initMap() {
                 parseFloat(markerElem.getAttribute('latitude')), //buscar a latitude do banco.php
                 parseFloat(markerElem.getAttribute('longitude'))); //buscar a longitude do banco.php
 
-            //var infowincontent = document.createElement('div');
+            var infowincontent = document.createElement('div');
             var strong = document.createElement('strong');
-            strong.textContent = localizacao
+            strong.textContent = localizacao;
             infowincontent.appendChild(strong);
-            //infowincontent.appendChild(document.createElement('br'));
+            infowincontent.appendChild(document.createElement('br'));
 
             var text = document.createElement('text');
-            text.textContent = acessibilidade
+            text.textContent = acessibilidade;
             infowincontent.appendChild(text);
             var icon = customLabel[type] || {};
 
