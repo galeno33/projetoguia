@@ -10,11 +10,11 @@ $xmlStr=str_replace("&",'&amp;',$xmlStr);
 return $xmlStr;
 }
 //selecionar o banco de dados 
-$db_selected = mysqli_select_db($dbnome, $conn);
+//$db_selected = mysqli_select_db($dbnome);
 
 // Selecionar o banco de dados GUIA DA ILHA
 $result = "SELECT * FROM guia;";
-$resultado = mysqli_query($db_selected, $result);
+$resultado = mysqli_query($result, $conn);
 
 
 header("Content-type: text/xml");
@@ -22,17 +22,18 @@ header("Content-type: text/xml");
 echo "<? xml version='1.0 ?>";
 //abrindo o arquivo de conexo
 echo '<markers>';
+$ind=0;
 //gerando uma conexao com o banco de dados
 while ($row = mysqli_fetch_assoc($resultado)){
 
-    echo '<marker';
-    echo 'codigo="' .parseToXML($row['codigo']) . '"';
-    echo 'acessibilidade="' .parseToXML($row['acessibilidade']) . '"';
-    echo 'localizacao="' .parseToXML($row['localizacao']) .'"';
-    echo 'latitude="' .$row['latitude'] . '"';
-    echo 'longitude=' .$row['longitude'] . '"';
-    echo '/>';
-
+  echo '<marker ';
+  echo 'id="' . $row['id'] . '" ';
+  echo 'endereço="' . parseToXML($row['endereço']) . '" ';
+  echo 'lat="' . $row['lat'] . '" ';
+  echo 'lng="' . $row['lng'] . '" ';
+  echo 'tipo="' . $row['tipo'] . '" ';
+  echo '/>';
+  $ind = $ind + 1;
 }
   //fechando o arquivo de XML
   echo '</markers>';

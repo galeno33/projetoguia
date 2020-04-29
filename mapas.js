@@ -9,7 +9,7 @@ var customLabel = {
 
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng('-2.488291', '-44.292780'),
+        center: new google.maps.LatLng(-2.488291, -44.292780),
         zoom: 13
 
         //-2.488291, -44.292780 --> lat e lng da praça do pescador
@@ -18,13 +18,12 @@ function initMap() {
     var infoWindow = new google.maps.InfoWindow;
 
 
-    downloadUrl('../proj22-04-2020/banco.php', function(data) {
+    downloadUrl('proj22-04-2020/banco.php', function(data) {
         var xml = data.responseXML;
 
         //
         var markers = xml.documentElement.getElementsByTagName('marker');
         Array.prototype.forEach.call(markers, function(markerElem) {
-            // var codigo = markerElem.getAttribute('codigo');
             var localizacao = markerElem.getAttribute('localizacao'); //local
             var acessibilidade = markerElem.getAttribute('acessibilidade'); //tipo de acessibilidade
 
@@ -34,12 +33,12 @@ function initMap() {
 
             var infowincontent = document.createElement('div');
             var strong = document.createElement('strong');
-            strong.textContent = localizacao;
+            strong.textContent = localizacao
             infowincontent.appendChild(strong);
             infowincontent.appendChild(document.createElement('br'));
 
             var text = document.createElement('text');
-            text.textContent = acessibilidade;
+            text.textContent = acessibilidade
             infowincontent.appendChild(text);
             var icon = customLabel[type] || {};
 
