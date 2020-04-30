@@ -17,28 +17,26 @@ function initMap() {
 
     var infoWindow = new google.maps.InfoWindow;
 
-
-    downloadUrl('proj22-04-2020/banco.php', function(data) {
+    downloadUrl('banco.php', function(data) {
         var xml = data.responseXML;
-
-        //
         var markers = xml.documentElement.getElementsByTagName('marker');
         Array.prototype.forEach.call(markers, function(markerElem) {
-            var localizacao = markerElem.getAttribute('localizacao'); //local
-            var acessibilidade = markerElem.getAttribute('acessibilidade'); //tipo de acessibilidade
+            var id = markerElem.getAttribute('id');
+            var endereço = markerElem.getAttribute('endereço'); //local
+            var tipo = markerElem.getAttribute('tipo'); //tipo de acessibilidade
 
             var point = new google.maps.LatLng(
-                parseFloat(markerElem.getAttribute('latitude')), //buscar a latitude do banco.php
-                parseFloat(markerElem.getAttribute('longitude'))); //buscar a longitude do banco.php
+                parseFloat(markerElem.getAttribute('lat')), //buscar a latitude do banco.php
+                parseFloat(markerElem.getAttribute('lng'))); //buscar a longitude do banco.php
 
             var infowincontent = document.createElement('div');
-            var strong = document.createElement('strong');
-            strong.textContent = localizacao
-            infowincontent.appendChild(strong);
+            //var strong = document.createElement('strong');
+            //strong.textContent = localizacao
+            //infowincontent.appendChild(strong);
             infowincontent.appendChild(document.createElement('br'));
 
             var text = document.createElement('text');
-            text.textContent = acessibilidade
+            text.textContent = endereço
             infowincontent.appendChild(text);
             var icon = customLabel[type] || {};
 
