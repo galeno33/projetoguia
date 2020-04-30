@@ -9,17 +9,17 @@ $xmlStr=str_replace("'",'&#39;',$xmlStr);
 $xmlStr=str_replace("&",'&amp;',$xmlStr);
 return $xmlStr;
 }
-//selecionar o banco de dados 
+//selecionar o banco de dados
 //$db_selected = mysqli_select_db($dbnome);
 
 // Selecionar o banco de dados GUIA DA ILHA
-$result = "SELECT * FROM markers";
+$result = "SELECT * FROM markers;";
 $resultado = mysqli_query($result, $conn);
 
 
 header("Content-type: text/xml");
 
-/*echo "<? xml version='1.0 ?>";*/
+echo "<? xml version='1.0 ?>";
 //abrindo o arquivo de conexo
 echo '<markers>';
 //$ind=0;

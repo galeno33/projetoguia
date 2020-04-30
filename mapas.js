@@ -20,8 +20,9 @@ function initMap() {
     downloadUrl('banco.php', function(data) {
         var xml = data.responseXML;
         var markers = xml.documentElement.getElementsByTagName('marker');
+
         Array.prototype.forEach.call(markers, function(markerElem) {
-            var id = markerElem.getAttribute('id');
+            //var id = markerElem.getAttribute('id');
             var endereço = markerElem.getAttribute('endereço'); //local
             var tipo = markerElem.getAttribute('tipo'); //tipo de acessibilidade
 
@@ -30,23 +31,21 @@ function initMap() {
                 parseFloat(markerElem.getAttribute('lng'))); //buscar a longitude do banco.php
 
             var infowincontent = document.createElement('div');
-            //var strong = document.createElement('strong');
-            //strong.textContent = localizacao
-            //infowincontent.appendChild(strong);
+            var strong = document.createElement('strong');
+            strong.textContent = tipo
+            infowincontent.appendChild(strong);
             infowincontent.appendChild(document.createElement('br'));
 
             var text = document.createElement('text');
             text.textContent = endereço
             infowincontent.appendChild(text);
-            var icon = customLabel[type] || {};
+            var icon = customLabel[tipo] || {};
 
             //adicionar marcador
             var marker = new google.maps.Marker({
                 map: map,
                 position: point,
-                label: icon.label,
-                icon: '<img src="../// Change this depending on the name of your PHP or XML fileimg/marcador.png"/>'
-
+                label: icon.label
             });
             marker.addListener('click', function() {
                 infoWindow.setContent(infowincontent);

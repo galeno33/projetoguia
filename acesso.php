@@ -1,5 +1,5 @@
 <?php
-$servidor="https://databases.000webhost.com/index.php";
+$servidor="https://databases.000webhost.com";
 $username="id13340806_ilhaguia";
 $password="NnVFckVKqH(#V>7";
 $dbnome="id13340806_guiailha";
