@@ -17,7 +17,7 @@ $result = "SELECT * FROM markers;";
 $resultado = mysqli_query($result, $conn);
 
 
-header("Content-type: text/xml");
+header("Content-tipo: text/xml");
 
 echo "<? xml version='1.0 ?>";
 //abrindo o arquivo de conexo

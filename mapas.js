@@ -22,7 +22,7 @@ function initMap() {
         var markers = xml.documentElement.getElementsByTagName('marker');
 
         Array.prototype.forEach.call(markers, function(markerElem) {
-            //var id = markerElem.getAttribute('id');
+            var id = markerElem.getAttribute('id');
             var endereço = markerElem.getAttribute('endereço'); //local
             var tipo = markerElem.getAttribute('tipo'); //tipo de acessibilidade
 
