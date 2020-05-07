@@ -1,10 +1,10 @@
 <?php
-$servidor="https://databases.000webhost.com";
-$username="id13340806_ilhaguia";
-$password="NnVFckVKqH(#V>7";
-$dbnome="id13340806_guiailha";
+$servidor="localhost";
+$username="phpmyadmin";
+$password="123456";
+$dbnome="guiailha";
 
 //criar conexao
-$conn = mysqli_connect($servidor, $username,$password, $dbnome);
+$conn = mysqli_connect($servidor, $username, $password, $dbnome);
 ?>
 

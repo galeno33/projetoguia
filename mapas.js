@@ -23,7 +23,7 @@ function initMap() {
 
         Array.prototype.forEach.call(markers, function(markerElem) {
             var id = markerElem.getAttribute('id');
-            var endereço = markerElem.getAttribute('endereço'); //local
+            var endereco = markerElem.getAttribute('endereco'); //local
             var tipo = markerElem.getAttribute('tipo'); //tipo de acessibilidade
 
             var point = new google.maps.LatLng(
@@ -37,7 +37,7 @@ function initMap() {
             infowincontent.appendChild(document.createElement('br'));
 
             var text = document.createElement('text');
-            text.textContent = endereço
+            text.textContent = endereco
             infowincontent.appendChild(text);
             var icon = customLabel[tipo] || {};
 
