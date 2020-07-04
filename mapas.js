@@ -18,6 +18,7 @@ function initMap() {
     var infoWindow = new google.maps.InfoWindow;
 
     //gerar a posiçao atual do usuario
+    //confirmado na linha 93 deste arquivo
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
@@ -26,7 +27,7 @@ function initMap() {
             };
         
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
+            infoWindow.setContent('Sua Localizaçao.');
             infoWindow.open(map);
             map.setCenter(pos);
             }, function() {
@@ -82,10 +83,11 @@ function initMap() {
     });
     
 }
-    //codigo para adicionar aplicaçao de voz para deficiente auditivos
+   /* //codigo para adicionar aplicaçao de voz para deficiente auditivos
     var msg = new SpeechSynthesisUtterance();
-    msg.infowincontent = text;
+    msg.text = endereco;
     window.speechSynthesis.speak(msg);
+    */
 
 //funçao sobre localizaçao atual do usuario
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -113,3 +115,42 @@ function downloadUrl(Url, callback) {
 }
 
 function doNothing() {}
+
+//funcao para leitura de codigo de texto para voz
+function textVoice(){
+    if ('speechSynthesis' in window) {
+      speechSynthesis.onvoiceschanged = function() {
+        var $voicelist = $('#voices');
+  
+        if($voicelist.find('option').length == 0) {
+          speechSynthesis.getVoices().forEach(function(voice, index) {
+            var $option = $('<option>')
+            .val(index)
+            .html(voice.name + (voice.default ? ' (default)' :''));
+  
+            $voicelist.append($option);
+          });
+  
+          $voicelist.material_select();
+        }
+      }
+      //um speak = id="speak" 
+      $('#speak').click(function(){
+        var text = $('#endereco').val();//direcionar o que vai ser falado pelo aplicativo
+        var msg = new SpeechSynthesisUtterance();
+        var voices = window.speechSynthesis.getVoices();
+        msg.voice = voices[$('#voices').val()];
+       //msg.rate = $('#rate').val() / 10;
+        //msg.pitch = $('#pitch').val();
+        //msg.text = text;
+  
+        msg.onend = function(e) {
+          console.log('Finished in ' + event.elapsedTime + ' seconds.');
+        };
+  
+        speechSynthesis.speak(msg);
+      })
+    } else {
+      $('#modal1').openModal();
+    }
+  };
